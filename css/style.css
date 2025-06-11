@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* navbar */
+.navbar {
+  width: 100%;
+  height: auto;
+  background-color: #166dba;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+}
+.navbar .logo img {
+  height: auto;
+  width: 80%;
+  padding: 20px;
+}
+
+.navbar .menu ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar .menu ul li {
+  position: relative;
+  margin: 0 10px;
+}
+.navbar .menu ul li a {
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: "overlock", sans-serif;
+  color: #fff;
+}
+
+.navbar .menu ul li a.active {
+  color: #000;
+}
+.navbar .menu ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+.navbar .menu ul li a:hover {
+  opacity: 0.8;
+}
+
+.navbar .menu ul li a.active:hover {
+  color: #fff;
+}
+
+.navbar .menu ul li a.active:hover::after {
+  transform: scaleX(0.5);
+}
+.navbar .menu ul li a:hover::after {
+  transform: scaleX(0.5);
+}
+
+/* hero */
+.hero {
+  width: 100%;
+  height: 85vh;
+  background: linear-gradient(rgba(22, 109, 186), rgba(11, 67, 115));
+}
+
+.hero .container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.hero .ctn-right h2 {
+  font-size: 42px;
+  color: #fff;
+  font-weight: 400;
+  font-family: "overlock", sans-serif;
+}
+
+.hero .hero_img img {
+  width: 430px;
+  height: auto;
+  align-items: center;
+  margin-left: 60px;
+  border-radius: 100%;
+  border: #000 2px solid;
+}
+
+.hero .ctn-left h1 {
+  font-size: 52px;
+  color: #fff;
+  font-weight: extra-bold;
+  font-family: "overlock", sans-serif;
+}
+
+.hero .ctn-left span {
+  font-size: 52px;
+  color: #000;
+  font-weight: extra-bold;
+}
+.hero .ctn-left h3 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 23px;
+  opacity: 0.8;
+  color: #fff;
+  font-weight: 400;
+  font-family: "overlock", sans-serif;
+}
+
+.sosial-icon a img {
+  margin-left: 15px;
+}
