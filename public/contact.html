@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact- Awan Devloper</title>
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- chatbot -->
+    <!-- Tombol toggle chatbot -->
+    <button id="chatbot-toggle">
+      <img src="assets/sosial-icon/whatsapp.png" alt="" />
+    </button>
+
+    <!-- Kotak chatbot -->
+    <div id="chatbot-box">
+      <div id="chatbot-messages"></div>
+      <div id="chatbot-input">
+        <input type="text" id="chat-input" placeholder="Tulis pesan..." />
+        <button onclick="sendMessage()">Kirim</button>
+      </div>
+    </div>
+
+    <!-- Loader -->
+    <div id="loader">
+      <div class="spinner"></div>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">
+          <img src="assets/logo/logo.png" alt="Awan Devloper Logo" />
+        </div>
+        <div class="menu">
+          <ul>
+            <li>
+              <a
+                href="index.html"
+                class="active"
+                id="home"
+                onclick="delayedRedirect(event)"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="about.html" onclick="delayedRedirect(event)">About</a>
+            </li>
+            <li><a href="blog" onclick="delayedRedirect(event)">Blog</a></li>
+            <li>
+              <a href="contact.html" onclick="delayedRedirect(event)"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+    <section class="contact">
+      <div class="container">
+        <div class="main-top">
+          <h1>Contact Me</h1>
+          <p>
+            If you have any questions or just want to say hello, don't hesitate
+            to reach out!
+          </p>
+        </div>
+        <!-- Email input -->
+        <form id="otp-form">
+          <label>Email</label>
+          <input type="email" id="email" required />
+          <button type="button" onclick="requestOTP()">Send OTP</button>
+        </form>
+
+        <!-- OTP Verification -->
+        <form id="verify-form" class="hidden">
+          <label>Enter OTP</label>
+          <input type="text" id="otp" maxlength="6" required />
+          <button type="button" onclick="verifyOTP()">Verification</button>
+        </form>
+
+        <!-- Contact Form -->
+        <form id="contact-form" class="hidden">
+          <label>Name</label>
+          <input type="text" id="name" required />
+          <label>Message</label>
+          <textarea id="message" rows="5" required></textarea>
+          <button type="submit">Send message</button>
+        </form>
+        <div id="custom-alert" class="hidden"></div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 Awan Devloper. All rights reserved.</p>
+        <ul class="footer-links">
+          <li>
+            <a href="https://github.com/" target="_blank" rel="noopener"
+              >GitHub</a
+            >
+          </li>
+          <li>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener"
+              >LinkedIn</a
+            >
+          </li>
+          <li><a href="mailto:your.email@example.com">Email</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Javascript -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

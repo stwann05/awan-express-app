@@ -1,0 +1,477 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* loader */
+#loader {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+/* chatbot */
+#chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.4s ease; /* 🔥 Transisi halus */
+}
+
+#chatbot-toggle img {
+  align-items: center;
+}
+
+#chatbot-toggle.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#chatbot-box {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+#chatbot-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+  font-family: "overlock", sans-serif;
+}
+
+#chatbot-input {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+#chatbot-input input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  font-family: "overlock", sans-serif;
+}
+
+#chatbot-input button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "overlock", sans-serif;
+}
+
+/* Animasi spinner */
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* navbar */
+.navbar {
+  width: 100%;
+  height: auto;
+  background-color: #166dba;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+}
+.navbar .logo img {
+  height: auto;
+  width: 80%;
+  padding: 20px;
+}
+
+.navbar .menu ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar .menu ul li {
+  position: relative;
+  margin: 0 10px;
+}
+.navbar .menu ul li a {
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: "overlock", sans-serif;
+  color: #fff;
+}
+
+.navbar .menu ul li a.active {
+  color: #000;
+}
+.navbar .menu ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+.navbar .menu ul li a:hover {
+  opacity: 0.8;
+}
+
+.navbar .menu ul li a.active:hover {
+  color: #fff;
+}
+
+.navbar .menu ul li a.active:hover::after {
+  transform: scaleX(0.5);
+}
+.navbar .menu ul li a:hover::after {
+  transform: scaleX(0.5);
+}
+
+/* hero */
+.hero {
+  width: 100%;
+  height: 85vh;
+  background: linear-gradient(rgba(22, 109, 186), rgba(11, 67, 115));
+}
+
+.hero .container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.hero .ctn-right h2 {
+  font-size: 42px;
+  color: #fff;
+  font-weight: 400;
+  font-family: "overlock", sans-serif;
+}
+
+.hero .hero_img img {
+  width: 430px;
+  height: auto;
+  align-items: center;
+  margin-left: 60px;
+  border-radius: 100%;
+  border: #000 2px solid;
+}
+
+.hero .ctn-left h1 {
+  font-size: 52px;
+  color: #fff;
+  font-weight: extra-bold;
+  font-family: "overlock", sans-serif;
+}
+
+.hero .ctn-left span {
+  font-size: 52px;
+  color: #000;
+  font-weight: extra-bold;
+}
+.hero .ctn-left h3 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 23px;
+  opacity: 0.8;
+  color: #fff;
+  font-weight: 400;
+  font-family: "overlock", sans-serif;
+}
+
+.sosial-icon a img {
+  margin-left: 15px;
+}
+
+/* About css */
+.about .container {
+  width: 100%;
+  height: 85vh;
+  background: linear-gradient(rgba(22, 109, 186), rgba(11, 67, 115));
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.about .about-content {
+  color: #fff;
+  font-family: "overlock", sans-serif;
+}
+
+.about .about-img img {
+  width: 400px;
+  height: auto;
+  border-radius: 100%;
+  border: #000 2px solid;
+}
+
+.about .about-content h1 {
+  font-size: 52px;
+  font-weight: 700;
+}
+
+.about .about-content h2 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 42px;
+  font-weight: 600;
+}
+
+.about .about-content h3 {
+  font-size: 20px;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.about .about-content h2 span {
+  color: #000;
+}
+
+.about .about-content .sosial-icon-about a img {
+  margin-top: 23px;
+  margin-left: 10px;
+}
+
+.me {
+  width: 100%;
+  height: 85vh;
+  background-color: #fff;
+}
+
+.me .container {
+  line-height: 1.5;
+  padding: 30px;
+}
+
+.me .container h1 {
+  font-size: 52px;
+  font-weight: 700;
+  color: #166dba;
+  font-family: "overlock", sans-serif;
+}
+.me .container h1 span {
+  color: #000;
+}
+.me .container h2 {
+  font-size: 42px;
+  font-weight: 600;
+  opacity: 0.6;
+  font-family: "overlock", sans-serif;
+}
+
+.me .container p {
+  margin-top: 20px;
+  line-height: 1.8;
+  font-size: 23px;
+  font-weight: 400;
+  opacity: 0.4;
+  font-family: "montagu slab", sans-serif;
+}
+
+/* contact */
+
+.main-top h1 {
+  font-size: 52px;
+  font-weight: 900;
+  color: #166dba;
+  font-family: "overlock", sans-serif;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.main-top p {
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.6;
+  font-family: "montagu slab", sans-serif;
+  text-align: center;
+}
+
+#contact-form {
+  background: #fff;
+  padding: 24px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+  max-width: 400px;
+  margin: 32px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+#contact-form label {
+  font-weight: 600;
+  font-family: "overlock", sans-serif;
+  margin-bottom: 4px;
+  color: #222;
+}
+#contact-form input,
+#contact-form textarea {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1rem;
+  font-family: "overlock", sans-serif;
+  transition: border 0.2s;
+}
+#contact-form input:focus,
+#contact-form textarea:focus {
+  border: 1.5px solid #007bff;
+  outline: none;
+}
+#contact-form button[type="submit"] {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: "overlock", sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#contact-form button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+/* OTP Form Styling */
+#otp-form,
+#verify-form {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  padding: 24px 20px;
+  max-width: 350px;
+  margin: 24px auto 16px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+#otp-form label,
+#verify-form label {
+  font-weight: 600;
+  font-family: "overlock", sans-serif;
+  margin-bottom: 4px;
+  color: #333;
+}
+#otp-form input,
+#verify-form input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: "overlock", sans-serif;
+  outline: none;
+  transition: border 0.2s;
+}
+#otp-form input:focus,
+#verify-form input:focus {
+  border-color: #007bff;
+}
+#otp-form button,
+#verify-form button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "overlock", sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#otp-form button:hover,
+#verify-form button:hover {
+  background: #0056b3;
+}
+
+/* footer */
+.footer {
+  background: #166dba;
+  color: #fff;
+  font-family: "overlock", sans-serif;
+  padding: 30px 0 15px 0;
+  text-align: center;
+  margin-top: 40px;
+}
+.footer .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+.footer-links li {
+  display: inline;
+}
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: "overlock", sans-serif;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}

@@ -16,6 +16,23 @@
     />
   </head>
   <body>
+    <!-- chatbot -->
+     <!-- Tombol toggle chatbot -->
+<button id="chatbot-toggle"><img src="assets/sosial-icon/whatsapp.png" alt=""></button>
+
+<!-- Kotak chatbot -->
+<div id="chatbot-box">
+  <div id="chatbot-messages"></div>
+  <div id="chatbot-input">
+    <input type="text" id="chat-input" placeholder="Tulis pesan..." />
+    <button onclick="sendMessage()">Kirim</button>
+  </div>
+</div>
+
+       <!-- Loader -->
+<div id="loader">
+  <div class="spinner"></div>
+</div>
     <!-- Navbar -->
     <nav class="navbar">
       <div class="container">
@@ -24,10 +41,10 @@
         </div>
         <div class="menu">
           <ul>
-            <li><a href="home" class="active">Home</a></li>
-            <li><a href="about">About</a></li>
-            <li><a href="blog">Blog</a></li>
-            <li><a href="contact">Contact</a></li>
+            <li><a href="index.html" class="active" id="home" onclick="delayedRedirect(event)">Home</a></li>
+            <li><a href="about.html" onclick="delayedRedirect(event)">About</a></li>
+            <li><a href="blog" onclick="delayedRedirect(event)">Blog</a></li>
+            <li><a href="contact.html" onclick="delayedRedirect(event)">Contact</a></li>
           </ul>
         </div>
       </div>
