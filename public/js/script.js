@@ -12,6 +12,47 @@ function delayedRedirect(event) {
   }, 1500);
 }
 
+// hamburger menu
+const hamburger = document.getElementById("hamburger");
+const menu = document.getElementById("menu");
+const icon = hamburger.querySelector("i");
+
+// Toggle menu saat hamburger diklik
+hamburger.addEventListener("click", (e) => {
+  e.stopPropagation(); // agar tidak trigger click outside
+  menu.classList.toggle("show");
+
+  // Toggle ikon
+  if (menu.classList.contains("show")) {
+    icon.classList.remove("fa-bars");
+    icon.classList.add("fa-times");
+  } else {
+    icon.classList.remove("fa-times");
+    icon.classList.add("fa-bars");
+  }
+});
+
+// Tutup menu saat klik di luar area menu
+document.addEventListener("click", (e) => {
+  const isClickInside = menu.contains(e.target) || hamburger.contains(e.target);
+
+  if (!isClickInside && menu.classList.contains("show")) {
+    menu.classList.remove("show");
+    icon.classList.remove("fa-times");
+    icon.classList.add("fa-bars");
+  }
+});
+
+// Tutup menu saat salah satu link diklik
+const links = document.querySelectorAll("#menu a");
+links.forEach((link) => {
+  link.addEventListener("click", () => {
+    menu.classList.remove("show");
+    icon.classList.remove("fa-times");
+    icon.classList.add("fa-bars");
+  });
+});
+
 // chat bot
 const toggleBtn = document.getElementById("chatbot-toggle");
 const chatbotBox = document.getElementById("chatbot-box");

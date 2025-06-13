@@ -1,0 +1,179 @@
+/* Tablet (≤ 768px) */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger i {
+    transition: transform 0.3s ease;
+  }
+
+  .navbar {
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.5);
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: #166dba;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: left 0.3s ease-in-out;
+    z-index: 999;
+  }
+
+  .menu.show {
+    left: 0;
+  }
+
+  .menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .menu ul li {
+    width: 100%;
+  }
+
+  .menu ul li a {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .menu ul li a:hover {
+    opacity: 0.8;
+  }
+
+  .hero .container,
+  .about .container {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .hero .hero_img img,
+  .about .about-img img {
+    margin-left: 0;
+    width: 300px;
+  }
+
+  .hero .ctn-left h1,
+  .about .about-content h1,
+  .me .container h1 {
+    font-size: 36px;
+  }
+
+  .hero .ctn-right h2,
+  .about .about-content h2,
+  .me .container h2 {
+    font-size: 28px;
+  }
+
+  .hero .ctn-left h3,
+  .about .about-content h3,
+  .me .container p {
+    font-size: 18px;
+  }
+
+  .me .container {
+    padding: 20px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  #chatbot-box {
+    width: 90%;
+    right: 5%;
+    bottom: 90px;
+  }
+}
+
+/* Handphone (≤ 480px) */
+@media (max-width: 480px) {
+  .navbar .logo img {
+    width: 60%;
+    padding: 10px;
+  }
+
+  .navbar .menu ul li a {
+    font-size: 16px;
+    margin-left: 0;
+  }
+
+  .hero .ctn-left h1,
+  .about .about-content h1,
+  .me .container h1 {
+    font-size: 28px;
+  }
+
+  .hero .ctn-right h2,
+  .about .about-content h2,
+  .me .container h2 {
+    font-size: 20px;
+  }
+
+  .hero .ctn-left h3,
+  .about .about-content h3,
+  .me .container p {
+    font-size: 16px;
+  }
+
+  .hero .hero_img img,
+  .about .about-img img {
+    width: 250px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #contact-form,
+  #otp-form,
+  #verify-form {
+    width: 90%;
+    margin: 24px auto;
+  }
+
+  #chatbot-toggle {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  #chatbot-box {
+    width: 95%;
+    right: 2.5%;
+    max-height: 80%;
+  }
+
+  .spinner {
+    width: 60px;
+    height: 60px;
+    border-width: 4px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+}

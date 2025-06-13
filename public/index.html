@@ -14,6 +14,9 @@
       href="https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <!-- Favicon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   </head>
   <body>
     <!-- chatbot -->
@@ -33,23 +36,33 @@
 <div id="loader">
   <div class="spinner"></div>
 </div>
-    <!-- Navbar -->
+<!-- navbar -->
+
     <nav class="navbar">
-      <div class="container">
-        <div class="logo">
-          <img src="assets/logo/logo.png" alt="Awan Devloper Logo" />
-        </div>
-        <div class="menu">
-          <ul>
-            <li><a href="index.html" class="active" id="home" onclick="delayedRedirect(event)">Home</a></li>
-            <li><a href="about.html" onclick="delayedRedirect(event)">About</a></li>
-            <li><a href="blog" onclick="delayedRedirect(event)">Blog</a></li>
-            <li><a href="contact.html" onclick="delayedRedirect(event)">Contact</a></li>
-          </ul>
-        </div>
+  <div class="container">
+    <!-- Kiri: Logo -->
+    <div class="logo">
+      <img src="assets/logo/logo.png" alt="Awan Developer Logo" />
+    </div>
+
+    <!-- Kanan: Hamburger dan Menu -->
+    <div class="right-section">
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
       </div>
-    </nav>
-    <!-- Navbar End -->
+
+      <div class="menu" id="menu">
+        <ul>
+          <li><a href="index.html" class="active" id="home" onclick="delayedRedirect(event)">Home</a></li>
+          <li><a href="about.html" onclick="delayedRedirect(event)">About</a></li>
+          <li><a href="blog" onclick="delayedRedirect(event)">Blog</a></li>
+          <li><a href="contact.html" onclick="delayedRedirect(event)">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- navbar end -->
 
     <!-- hero section -->
     <section class="hero">
