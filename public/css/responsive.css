@@ -120,6 +120,9 @@
   .me .container h1 {
     font-size: 28px;
   }
+  .hero .ctn-left h1 span {
+    font-size: 28px;
+  }
 
   .hero .ctn-right h2,
   .about .about-content h2,
