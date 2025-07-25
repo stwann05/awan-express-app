@@ -105,6 +105,12 @@ app.post("/send-email", (req, res) => {
 app.post("/chat", async (req, res) => {
   const { message } = req.body;
 
+  // 🐞 Tambahkan log untuk debug API Key
+  console.log(
+    "📦 OPENROUTER_API_KEY:",
+    process.env.OPENROUTER_API_KEY ? "TERBACA" : "TIDAK TERBACA"
+  );
+
   if (!message) {
     return res.status(400).json({ error: "Pesan tidak boleh kosong." });
   }
