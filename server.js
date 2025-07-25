@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const path = require("path");
 const axios = require("axios");
-require("dotenv").config();
+require("dotenv").config(); // aman digunakan untuk local
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -11,7 +11,6 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // ========== OTP & EMAIL ==========
-
 let otpStore = {};
 let chatHistory = [];
 
@@ -102,20 +101,28 @@ app.post("/send-email", (req, res) => {
   });
 });
 
-// ========== CHATBOT via OPENROUTER (Multibahasa) ==========
-
+// ========== CHATBOT via OPENROUTER ==========
 app.post("/chat", async (req, res) => {
   const { message } = req.body;
 
-  // Tambahkan user message ke riwayat
+  if (!message) {
+    return res.status(400).json({ error: "Pesan tidak boleh kosong." });
+  }
+
   chatHistory.push({ role: "user", content: message });
 
-  // Prompt system tetap dalam bahasa Indonesia
   const systemPrompt = {
     role: "system",
     content:
       "Kamu adalah asisten AI yang selalu menjawab dalam Bahasa Indonesia. Jawabanmu harus jelas, lengkap, dan nyambung dengan konteks pembicaraan sebelumnya.",
   };
+
+  const apiKey = process.env.OPENROUTER_API_KEY;
+
+  if (!apiKey) {
+    console.error("❌ OPENROUTER_API_KEY tidak tersedia.");
+    return res.status(500).json({ error: "Server tidak memiliki API Key." });
+  }
 
   try {
     const response = await axios.post(
@@ -126,28 +133,30 @@ app.post("/chat", async (req, res) => {
       },
       {
         headers: {
-          Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+          Authorization: `Bearer ${apiKey}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "http://localhost:3000",
           "X-Title": "Chatbot Kontekstual Ivan",
         },
       }
     );
 
     const botReply = response.data.choices[0].message.content;
-
-    // Tambahkan jawaban bot ke riwayat
     chatHistory.push({ role: "assistant", content: botReply });
-
     res.json({ response: botReply });
   } catch (error) {
-    console.error("OpenRouter error:", error.response?.data || error.message);
-    res.status(500).json({ error: "Gagal mendapatkan respon dari AI." });
+    console.error(
+      "❌ OpenRouter error:",
+      error.response?.data || error.message
+    );
+    res.status(500).json({
+      error:
+        error.response?.data?.error?.message ||
+        "Gagal mendapatkan respon dari AI.",
+    });
   }
 });
 
 // ========== START SERVER ==========
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ Server berjalan di http://localhost:${PORT}`);
