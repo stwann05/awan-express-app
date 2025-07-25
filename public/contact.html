@@ -24,7 +24,7 @@
     <!-- chatbot -->
     <!-- Tombol toggle chatbot -->
     <button id="chatbot-toggle">
-      <img src="assets/sosial-icon/whatsapp.png" alt="" />
+      <i class="fas fa-headset" style="font-size: 30px"></i>
     </button>
 
     <!-- Kotak chatbot -->
@@ -33,9 +33,11 @@
       <div id="chatbot-input">
         <input type="text" id="chat-input" placeholder="Tulis pesan..." />
         <button onclick="sendMessage()">Kirim</button>
+        <button onclick="resetChat()" class="reset-btn">
+          🗑️ Hapus Riwayat
+        </button>
       </div>
     </div>
-
     <!-- Loader -->
     <div id="loader">
       <div class="spinner"></div>

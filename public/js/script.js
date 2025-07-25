@@ -1,41 +1,28 @@
-// loader
+/* ===================== LOADER ===================== */
 function delayedRedirect(event) {
-  event.preventDefault(); // Mencegah langsung pindah halaman
+  event.preventDefault();
   const url = event.target.href;
-
-  // Tampilkan loader
   document.getElementById("loader").style.display = "flex";
-
-  // Tunggu 1.5 detik lalu redirect
-  setTimeout(() => {
-    window.location.href = url;
-  }, 1500);
+  setTimeout(() => (window.location.href = url), 1500);
 }
 
-// hamburger menu
+/* ===================== HAMBURGER MENU ===================== */
 const hamburger = document.getElementById("hamburger");
 const menu = document.getElementById("menu");
 const icon = hamburger.querySelector("i");
 
 // Toggle menu saat hamburger diklik
 hamburger.addEventListener("click", (e) => {
-  e.stopPropagation(); // agar tidak trigger click outside
+  e.stopPropagation();
   menu.classList.toggle("show");
 
-  // Toggle ikon
-  if (menu.classList.contains("show")) {
-    icon.classList.remove("fa-bars");
-    icon.classList.add("fa-times");
-  } else {
-    icon.classList.remove("fa-times");
-    icon.classList.add("fa-bars");
-  }
+  icon.classList.toggle("fa-bars");
+  icon.classList.toggle("fa-times");
 });
 
 // Tutup menu saat klik di luar area menu
 document.addEventListener("click", (e) => {
   const isClickInside = menu.contains(e.target) || hamburger.contains(e.target);
-
   if (!isClickInside && menu.classList.contains("show")) {
     menu.classList.remove("show");
     icon.classList.remove("fa-times");
@@ -43,9 +30,8 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Tutup menu saat salah satu link diklik
-const links = document.querySelectorAll("#menu a");
-links.forEach((link) => {
+// Tutup menu saat link diklik
+document.querySelectorAll("#menu a").forEach((link) => {
   link.addEventListener("click", () => {
     menu.classList.remove("show");
     icon.classList.remove("fa-times");
@@ -53,84 +39,102 @@ links.forEach((link) => {
   });
 });
 
-// chat bot
+/* ===================== CHATBOT TOGGLE ===================== */
 const toggleBtn = document.getElementById("chatbot-toggle");
 const chatbotBox = document.getElementById("chatbot-box");
 const chatMessages = document.getElementById("chatbot-messages");
 
-let scrollTimeout;
-
-// Tampilkan/Sembunyikan chatbot box
 toggleBtn.onclick = () => {
   chatbotBox.style.display =
     chatbotBox.style.display === "flex" ? "none" : "flex";
 };
 
-function sendMessage() {
+/* ===================== CHATBOT MESSAGE ===================== */
+async function sendMessage() {
   const input = document.getElementById("chat-input");
   const userText = input.value.trim();
   if (!userText) return;
 
-  chatMessages.innerHTML += `<div><b>You:</b> ${userText}</div>`;
-  let botResponse = "Maaf, saya tidak mengerti.";
+  const time = new Date().toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
-  if (
-    userText.toLowerCase().includes("halo") ||
-    userText.toLowerCase().includes("hai")
-  ) {
-    botResponse = "Kamu bisa mendapatkan bantuan dengan mengunjungi help.html.";
-  } else if (userText.toLowerCase().includes("produk")) {
-    botResponse =
-      "Kami menawarkan berbagai produk menarik! Lihat di produk.html.";
-  } else if (userText.toLowerCase().includes("harga")) {
-    botResponse = "Informasi harga tersedia lengkap di harga.html.";
-  } else if (userText.toLowerCase().includes("fitur")) {
-    botResponse = "Lihat semua fitur kami di fitur.html.";
-  } else if (userText.toLowerCase().includes("cara daftar")) {
-    botResponse = "Panduan pendaftaran tersedia di daftar.html.";
-  } else if (userText.toLowerCase().includes("akun")) {
-    botResponse = "Kelola akun kamu di akun.html.";
-  } else if (userText.toLowerCase().includes("login")) {
-    botResponse = "Silakan masuk melalui login.html.";
-  } else if (userText.toLowerCase().includes("keluar")) {
-    botResponse = "Kamu telah keluar. Sampai jumpa lagi!";
-  } else if (userText.toLowerCase().includes("lokasi")) {
-    botResponse =
-      "Kami berlokasi di Jl. Contoh No. 123. Cek maps.html untuk lebih jelasnya.";
-  } else if (userText.toLowerCase().includes("testimoni")) {
-    botResponse = "Baca pengalaman pengguna kami di testimoni.html.";
-  } else if (userText.toLowerCase().includes("event")) {
-    botResponse = "Lihat acara dan promo terbaru di event.html.";
-  } else if (userText.toLowerCase().includes("faq")) {
-    botResponse =
-      "Pertanyaan yang sering diajukan bisa kamu lihat di faq.html.";
-  } else if (userText.toLowerCase().includes("tim")) {
-    botResponse = "Kenali tim kami lebih dekat di tim.html.";
-  } else if (userText.toLowerCase().includes("karir")) {
-    botResponse = "Ingin bergabung dengan kami? Lihat lowongan di karir.html.";
-  } else if (userText.toLowerCase().includes("blog")) {
-    botResponse = "Baca artikel menarik kami di blog.html.";
+  chatMessages.innerHTML += `
+    <div class="bubble user">
+      <span><b>You:</b> ${userText}</span><br>
+      <small class="timestamp">${time}</small>
+    </div>
+  `;
+  input.value = "";
+
+  const typingDiv = document.createElement("div");
+  typingDiv.className = "bubble bot typing";
+  typingDiv.innerHTML = `<span><i>Awan AI sedang mengetik...</i></span>`;
+  chatMessages.appendChild(typingDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  try {
+    const res = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: userText }),
+    });
+
+    const data = await res.json();
+    typingDiv.remove();
+
+    const replyTime = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    chatMessages.innerHTML += `
+      <div class="bubble bot">
+        <span><b>Awan AI:</b> ${data.response}</span><br>
+        <small class="timestamp">${replyTime}</small>
+      </div>
+    `;
+  } catch (error) {
+    typingDiv.remove();
+    chatMessages.innerHTML += `
+      <div class="bubble bot">
+        <span><b>Awan AI:</b> Maaf, terjadi kesalahan saat menghubungi server.</span><br>
+        <small class="timestamp">${time}</small>
+      </div>
+    `;
+    console.error("Chat error:", error);
   }
 
-  setTimeout(() => {
-    chatMessages.innerHTML += `<div><b>Admin:</b> ${botResponse}</div>`;
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }, 500);
-
-  input.value = "";
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-// SEMBUNYIKAN toggle saat scroll, lalu tampilkan kembali dengan transisi
-window.addEventListener("scroll", () => {
-  toggleBtn.classList.add("hidden"); // Tambahkan class yang memicu opacity 0
-
-  clearTimeout(scrollTimeout);
-  scrollTimeout = setTimeout(() => {
-    toggleBtn.classList.remove("hidden"); // Hapus class agar muncul lagi
-  }, 1000); // Tampil kembali setelah 1 detik berhenti scroll
+// Kirim saat tekan Enter
+document.getElementById("chat-input").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") sendMessage();
 });
 
-// Form OTP
+/* ===================== CHAT RESET ===================== */
+function resetChat() {
+  fetch("/reset-history", { method: "POST" });
+  chatMessages.innerHTML = `
+    <div class="bubble bot">
+      <span><i>Riwayat chat telah dihapus.</i></span>
+    </div>
+  `;
+}
+
+/* ===================== HIDE TOGGLE SAAT SCROLL ===================== */
+let scrollTimeout;
+window.addEventListener("scroll", () => {
+  toggleBtn.classList.add("hidden");
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    toggleBtn.classList.remove("hidden");
+  }, 1000);
+});
+
+/* ===================== FORM OTP & EMAIL ===================== */
 function showAlert(msg, error = false) {
   const box = document.getElementById("custom-alert");
   box.textContent = msg;

@@ -2,6 +2,7 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const path = require("path");
+const axios = require("axios");
 require("dotenv").config();
 
 const app = express();
@@ -9,12 +10,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "contact.html"));
-});
+// ========== OTP & EMAIL ==========
 
-// Simpan OTP sementara di memori
 let otpStore = {};
+let chatHistory = [];
 
 function generateOTP() {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -24,7 +23,10 @@ function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// Kirim OTP
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "contact.html"));
+});
+
 app.post("/request-otp", (req, res) => {
   const { email } = req.body;
   if (!isValidEmail(email)) return res.send("Format email tidak valid.");
@@ -54,24 +56,21 @@ app.post("/request-otp", (req, res) => {
     } else {
       console.log("OTP terkirim ke", email);
       res.send("OTP telah dikirim ke email Anda.");
-      // Hapus OTP setelah 5 menit
       setTimeout(() => delete otpStore[email], 5 * 60 * 1000);
     }
   });
 });
 
-// Verifikasi OTP
 app.post("/verify-otp", (req, res) => {
   const { email, otp } = req.body;
   if (otpStore[email] && otpStore[email] === otp) {
-    delete otpStore[email]; // OTP valid, hapus
+    delete otpStore[email];
     res.send("OTP valid");
   } else {
     res.send("OTP tidak cocok atau kadaluarsa.");
   }
 });
 
-// Kirim pesan jika OTP lolos
 app.post("/send-email", (req, res) => {
   const { name, email, message } = req.body;
   if (!name || !email || !message) return res.send("Semua field wajib diisi.");
@@ -103,7 +102,53 @@ app.post("/send-email", (req, res) => {
   });
 });
 
+// ========== CHATBOT via OPENROUTER (Multibahasa) ==========
+
+app.post("/chat", async (req, res) => {
+  const { message } = req.body;
+
+  // Tambahkan user message ke riwayat
+  chatHistory.push({ role: "user", content: message });
+
+  // Prompt system tetap dalam bahasa Indonesia
+  const systemPrompt = {
+    role: "system",
+    content:
+      "Kamu adalah asisten AI yang selalu menjawab dalam Bahasa Indonesia. Jawabanmu harus jelas, lengkap, dan nyambung dengan konteks pembicaraan sebelumnya.",
+  };
+
+  try {
+    const response = await axios.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        model: "openai/gpt-3.5-turbo",
+        messages: [systemPrompt, ...chatHistory],
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+          "Content-Type": "application/json",
+          "HTTP-Referer": "http://localhost:3000",
+          "X-Title": "Chatbot Kontekstual Ivan",
+        },
+      }
+    );
+
+    const botReply = response.data.choices[0].message.content;
+
+    // Tambahkan jawaban bot ke riwayat
+    chatHistory.push({ role: "assistant", content: botReply });
+
+    res.json({ response: botReply });
+  } catch (error) {
+    console.error("OpenRouter error:", error.response?.data || error.message);
+    res.status(500).json({ error: "Gagal mendapatkan respon dari AI." });
+  }
+});
+
+// ========== START SERVER ==========
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server jalan di port ${PORT}`);
+  console.log(`✅ Server berjalan di http://localhost:${PORT}`);
 });

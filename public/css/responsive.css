@@ -18,7 +18,7 @@
     left: -100%;
     width: 70%;
     height: 100vh;
-    background-color: #166dba;
+    background-color: #393e46;
     padding: 60px 20px;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,6 @@
   }
 
   .menu ul {
-    display: flex;
     flex-direction: column;
     gap: 20px;
     width: 100%;
@@ -65,43 +64,42 @@
 
   .hero .hero_img img,
   .about .about-img img {
-    margin-left: 0;
     width: 300px;
+    margin: 0 auto;
   }
 
   .hero .ctn-left h1,
   .about .about-content h1,
   .me .container h1 {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .hero .ctn-right h2,
   .about .about-content h2,
   .me .container h2 {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .hero .ctn-left h3,
   .about .about-content h3,
   .me .container p {
-    font-size: 18px;
+    font-size: 16px;
   }
 
+  .container,
   .me .container {
-    padding: 20px;
-  }
-
-  .container {
     width: 100%;
     max-width: 100%;
     padding: 0 16px;
     box-sizing: border-box;
   }
 
+  /* Chatbot Responsiveness */
   #chatbot-box {
     width: 90%;
     right: 5%;
     bottom: 90px;
+    max-height: 80%;
   }
 }
 
@@ -132,12 +130,13 @@
   .hero .ctn-left h3,
   .about .about-content h3,
   .me .container p {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .hero .hero_img img,
   .about .about-img img {
     width: 250px;
+    margin: 0 auto;
   }
 
   .footer-links {
@@ -161,7 +160,8 @@
   #chatbot-box {
     width: 95%;
     right: 2.5%;
-    max-height: 80%;
+    max-height: 85%;
+    bottom: 85px;
   }
 
   .spinner {
@@ -171,8 +171,6 @@
   }
 
   .container {
-    width: 100%;
-    max-width: 100%;
     padding: 0 12px;
     box-sizing: border-box;
   }
