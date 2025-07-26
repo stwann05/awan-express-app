@@ -15,17 +15,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   </head>
   <body>
-        <!-- chatbot -->
-    <button id="chatbot-toggle"><i class="fas fa-headset" style="font-size: 30px;"></i>
-    </button>
-    <!-- Kotak chatbot -->
-    <div id="chatbot-box">
-      <div id="chatbot-messages"></div>
-      <div id="chatbot-input">
-        <input type="text" id="chat-input" placeholder="Tulis pesan..." />
-        <button onclick="sendMessage()">Kirim</button>
-      </div>
-    </div>
+      <!-- chatbot -->
+     <!-- Tombol toggle chatbot -->
+<button id="chatbot-toggle"><i class="fas fa-headset" style="font-size: 30px;"></i>
+</button>
+
+<!-- Kotak chatbot -->
+<div id="chatbot-box">
+  <div id="chatbot-messages"></div>
+  <div id="chatbot-input">
+    <input type="text" id="chat-input" placeholder="Tulis pesan..." />
+    <button onclick="sendMessage()">Kirim</button>
+    <button onclick="resetChat()" class="reset-btn">🗑️ Hapus Riwayat</button>
+  </div>
+</div>
 
     <!-- Loader -->
     <div id="loader">
@@ -37,7 +40,7 @@
   <div class="container">
     <!-- Kiri: Logo -->
     <div class="logo">
-      <img src="assets/logo/logo.png" alt="Awan Developer Logo" />
+      <img src="assets/logo/logo.svg" alt="Awan Developer Logo" />
     </div>
 
     <!-- Kanan: Hamburger dan Menu -->
