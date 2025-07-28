@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 .navbar .container {
@@ -313,12 +314,254 @@
   font-family: "overlock", sans-serif;
 }
 
+.hero-section {
+  background-color: #f1f7f3;
+  padding: 80px 30px;
+  font-family: "overlock", sans-serif;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.hero-left {
+  flex: 1 1 500px;
+  padding: 20px;
+}
+
+.hero-left h1 {
+  font-size: 48px;
+  color: #50a9b7;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero-left p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-cta {
+  background-color: #50a9b7;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-cta:hover {
+  background-color: #3d8c99;
+}
+
+.btn-cta-outline {
+  background-color: transparent;
+  border: 2px solid #50a9b7;
+  color: #50a9b7;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-cta-outline:hover {
+  background-color: #50a9b7;
+  color: white;
+}
+
+.hero-right {
+  flex: 1 1 400px;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-right img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
 .sosial-icon a img {
   margin-top: 24px;
   margin-left: 10px;
   width: 34px;
   height: 34px;
   filter: brightness(0.1) invert(0.6); /* Abu terang */
+}
+
+.pricing-section {
+  padding: 60px 30px;
+  background-color: #f7fafc;
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.pricing-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  font-size: 24px;
+  color: #50a9b7;
+  margin-bottom: 10px;
+}
+
+.card .price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin: 15px 0;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.card ul li {
+  margin-bottom: 10px;
+  color: #555;
+  position: relative;
+  padding-left: 20px;
+}
+
+.card ul li::before {
+  content: "✓";
+  color: #50a9b7;
+  position: absolute;
+  left: 0;
+}
+
+.btn-order {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #50a9b7;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-order:hover {
+  background: #3d8c99;
+}
+
+.highlight {
+  border: 2px solid #50a9b7;
+}
+
+.paket-icon {
+  font-size: 48px;
+  color: #50a9b7;
+  margin-bottom: 15px;
+}
+
+.layanan-section {
+  padding: 60px 30px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #50a9b7;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.layanan-section {
+  padding: 60px 30px;
+  background: #ffffff;
+  text-align: center;
+  font-family: "Segoe UI", sans-serif; /* SAMAKAN dengan pricing-section */
+}
+
+.layanan-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.layanan-cards .card {
+  width: 300px;
+  padding: 30px;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: 0.3s ease;
+}
+
+.layanan-cards .card:hover {
+  transform: translateY(-5px);
+  background-color: #f1f7f3;
+}
+
+.layanan-cards .card i.layanan-icon {
+  font-size: 48px;
+  color: #50a9b7;
+  margin-bottom: 20px;
+}
+
+.layanan-cards .card h3 {
+  font-size: 22px;
+  color: #50a9b7;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.layanan-cards .card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
 }
 
 /* About css */
@@ -406,6 +649,64 @@
   font-weight: 400;
   opacity: 0.4;
   font-family: "montagu slab", sans-serif;
+}
+
+/* blog */
+.blog-section {
+  padding: 80px 30px;
+  background-color: #ffffff;
+  font-family: "overlock", sans-serif;
+  text-align: center;
+}
+
+.blog-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.blog-title {
+  font-size: 36px;
+  color: #50a9b7;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.blog-subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.blog-points {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: left;
+}
+
+.point {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.point i {
+  font-size: 28px;
+  color: #50a9b7;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.point h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.point p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
 }
 
 /* contact */
