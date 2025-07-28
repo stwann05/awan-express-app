@@ -178,3 +178,14 @@
     box-sizing: border-box;
   }
 }
+
+/* Optional: Responsive tweaks untuk layar sangat kecil */
+@media (max-width: 480px) {
+  .certificate {
+    padding: 60px 20px;
+  }
+
+  .certificate-item {
+    padding: 20px;
+  }
+}

@@ -428,6 +428,63 @@
   text-align: center;
 }
 
+.certificate {
+  width: 100%;
+  padding: 80px 40px;
+  background-color: #f1f7f3;
+  font-family: "overlock", sans-serif;
+  text-align: center;
+}
+
+.certificate h1 {
+  font-size: clamp(36px, 5vw, 64px); /* lebih besar & responsive */
+  font-weight: 700;
+  color: #50a9b7;
+  margin-bottom: 50px;
+}
+
+.certificate h1 span {
+  color: #00000080;
+}
+
+.certificate-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+
+.certificate-item {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  flex: 1 1 280px; /* responsive: min lebar 280px */
+  max-width: 320px;
+  padding: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.certificate-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.certificate-item p {
+  font-size: clamp(16px, 2.5vw, 20px); /* teks p lebih besar & responsive */
+  color: #333;
+  font-family: "montagu slab", serif;
+  font-weight: 400;
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
 #contact-form {
   background: #fff;
   padding: 24px 20px;
@@ -534,7 +591,6 @@
   font-family: "overlock", sans-serif;
   padding: 30px 0 15px 0;
   text-align: center;
-  margin-top: 40px;
 }
 .footer .container {
   max-width: 900px;

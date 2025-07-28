@@ -8,67 +8,92 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
     <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
- <!-- Favicon -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Favicon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
-      <!-- chatbot -->
-     <!-- Tombol toggle chatbot -->
-<button id="chatbot-toggle"><i class="fas fa-headset" style="font-size: 30px;"></i>
-</button>
+    <!-- chatbot -->
+    <!-- Tombol toggle chatbot -->
+    <button id="chatbot-toggle">
+      <i class="fas fa-headset" style="font-size: 30px"></i>
+    </button>
 
-<!-- Kotak chatbot -->
-<div id="chatbot-box">
-  <div id="chatbot-messages"></div>
-  <div id="chatbot-input">
-    <input type="text" id="chat-input" placeholder="Tulis pesan..." />
-    <button onclick="sendMessage()">Kirim</button>
-    <button onclick="resetChat()" class="reset-btn">🗑️ Hapus Riwayat</button>
-  </div>
-</div>
+    <!-- Kotak chatbot -->
+    <div id="chatbot-box">
+      <div id="chatbot-messages"></div>
+      <div id="chatbot-input">
+        <input type="text" id="chat-input" placeholder="Tulis pesan..." />
+        <button onclick="sendMessage()">Kirim</button>
+        <button onclick="resetChat()" class="reset-btn">
+          🗑️ Hapus Riwayat
+        </button>
+      </div>
+    </div>
 
     <!-- Loader -->
     <div id="loader">
       <div class="spinner"></div>
     </div>
-   <!-- navbar -->
+    <!-- navbar -->
 
     <nav class="navbar">
-  <div class="container">
-    <!-- Kiri: Logo -->
-    <div class="logo">
-      <img src="assets/logo/logo.svg" alt="Awan Developer Logo" />
-    </div>
+      <div class="container">
+        <!-- Kiri: Logo -->
+        <div class="logo">
+          <img src="assets/logo/logo.svg" alt="Awan Developer Logo" />
+        </div>
 
-    <!-- Kanan: Hamburger dan Menu -->
-    <div class="right-section">
-      <div class="hamburger" id="hamburger">
-        <i class="fas fa-bars"></i>
-      </div>
+        <!-- Kanan: Hamburger dan Menu -->
+        <div class="right-section">
+          <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+          </div>
 
-      <div class="menu" id="menu">
-        <ul>
-          <li><a href="index.html" class="active" id="home" onclick="delayedRedirect(event)">Home</a></li>
-          <li><a href="about.html" onclick="delayedRedirect(event)">About</a></li>
-          <li><a href="blog" onclick="delayedRedirect(event)">Blog</a></li>
-          <li><a href="contact.html" onclick="delayedRedirect(event)">Contact</a></li>
-        </ul>
+          <div class="menu" id="menu">
+            <ul>
+              <li>
+                <a
+                  href="index.html"
+                  class="active"
+                  id="home"
+                  onclick="delayedRedirect(event)"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html" onclick="delayedRedirect(event)">About</a>
+              </li>
+              <li><a href="blog" onclick="delayedRedirect(event)">Blog</a></li>
+              <li>
+                <a href="contact.html" onclick="delayedRedirect(event)"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</nav>
-<!-- navbar end -->
+    </nav>
+    <!-- navbar end -->
 
     <!-- About section -->
     <section class="about">
       <div class="container">
         <div class="about-content">
           <h1>About Me</h1>
-          <h2>Ivan Setiawan <br>
-            {Awan<span>Devloper}</span></h2>
+          <h2>
+            Ivan Setiawan <br />
+            {Awan<span>Devloper}</span>
+          </h2>
           <h3>Front-End Web Devloper</h3>
           <div class="sosial-icon-about">
             <a href=""><img src="assets/sosial-icon/whatsapp.png" alt="" /></a>
@@ -84,16 +109,71 @@
     </section>
     <!-- About section end -->
 
-    <div class="me">
+    <section class="me">
       <div class="container">
         <h1>Ivan Setiawan {Awan <span>Devloper}</span></h1>
         <h2>Fronnt-End Web Devloper</h2>
-        <p>Hello My name is Ivan, I have 1.5 years of experience in programming, especially in Fornt-end Web Developer, </p>
-        <p>I had attended some basic training on a learning platform
-and I also continued my studies through video tutorials on YouTube.</p>
-<p>
-I always like to learn new technologies.</p>
-    </div>
+        <p>
+          Hello My name is Ivan, I have 1.5 years of experience in programming,
+          especially in Fornt-end Web Developer,
+        </p>
+        <p>
+          I had attended some basic training on a learning platform and I also
+          continued my studies through video tutorials on YouTube.
+        </p>
+        <p>I always like to learn new technologies.</p>
+      </div>
+    </section>
+
+    <section class="certificate">
+      <div class="container">
+        <h1>My <span>Certificates</span></h1>
+        <div class="certificate-grid">
+          <div class="certificate-item">
+            <img
+              src="assets/sertifikat/dasar-fe.png"
+              alt="Web Certificate from Dicoding"
+            />
+            <p>Belajar Membuat Front-End Web untuk Pemula - Dicoding</p>
+          </div>
+          <div class="certificate-item">
+            <img
+              src="assets/sertifikat/dasar-js.png"
+              alt="JavaScript Certificate"
+            />
+            <p>JavaScript Dasar - Dicoding</p>
+          </div>
+          <div class="certificate-item">
+            <img
+              src="assets/sertifikat/dasar-pemroraman.png"
+              alt="HTML CSS Certificate"
+            />
+            <p>Belajar Dasar Pemrograman Web - Dicoding</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 Awan Devloper. All rights reserved.</p>
+        <ul class="footer-links">
+          <li>
+            <a href="https://github.com/" target="_blank" rel="noopener"
+              >GitHub</a
+            >
+          </li>
+          <li>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener"
+              >LinkedIn</a
+            >
+          </li>
+          <li><a href="mailto:your.email@example.com">Email</a></li>
+        </ul>
+      </div>
+    </footer>
+    <!-- footer end -->
 
     <!-- My Javascript -->
     <script src="js/script.js"></script>
